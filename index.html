@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>GraceProposal — Login</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Bebas+Neue&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -23,11 +24,10 @@
     html, body {
       height: 100%;
       background: var(--navy-deep);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-family: 'Inter', sans-serif;
       overflow: hidden;
     }
 
-    /* ── Animated background ── */
     .bg {
       position: fixed;
       inset: 0;
@@ -38,7 +38,6 @@
       z-index: 0;
     }
 
-    /* Gold geometric lines */
     .bg::before {
       content: '';
       position: absolute;
@@ -55,7 +54,6 @@
       100% { transform: translate(60px, 60px); }
     }
 
-    /* Floating orbs */
     .orb {
       position: fixed;
       border-radius: 50%;
@@ -81,7 +79,6 @@
       50% { transform: translate(20px, -20px) scale(1.05); }
     }
 
-    /* ── Main layout ── */
     .wrapper {
       position: relative;
       z-index: 1;
@@ -90,7 +87,6 @@
       grid-template-columns: 1fr 1fr;
     }
 
-    /* ── Left panel ── */
     .left {
       display: flex;
       flex-direction: column;
@@ -125,9 +121,7 @@
       margin-bottom: 6px;
     }
 
-    .brand-name span {
-      color: var(--gold);
-    }
+    .brand-name span { color: var(--gold); }
 
     .app-name {
       font-family: 'Playfair Display', serif;
@@ -157,12 +151,8 @@
       max-width: 320px;
     }
 
-    .tagline strong {
-      color: rgba(255,215,0,0.6);
-      font-weight: 500;
-    }
+    .tagline strong { color: rgba(255,215,0,0.6); font-weight: 500; }
 
-    /* ── Right panel (login form) ── */
     .right {
       display: flex;
       align-items: center;
@@ -176,28 +166,10 @@
       to { opacity: 1; transform: translateX(0); }
     }
 
-    .login-card {
-      width: 100%;
-      max-width: 380px;
-    }
+    .login-card { width: 100%; max-width: 380px; }
+    .login-title { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .login-subtitle { font-family: 'Inter', sans-serif; font-size: 11px; color: var(--white-muted); letter-spacing: 0.05em; margin-bottom: 40px; }
 
-    .login-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 8px;
-    }
-
-    .login-subtitle {
-      font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      color: var(--white-muted);
-      letter-spacing: 0.05em;
-      margin-bottom: 40px;
-    }
-
-    /* Lock icon */
     .lock-icon {
       width: 48px;
       height: 48px;
@@ -211,11 +183,7 @@
       font-size: 20px;
     }
 
-    /* Form */
-    .form-group {
-      margin-bottom: 20px;
-    }
-
+    .form-group { margin-bottom: 20px; }
     .form-label {
       font-family: 'Inter', sans-serif;
       display: block;
@@ -227,10 +195,7 @@
       font-weight: 500;
     }
 
-    .form-input-wrap {
-      position: relative;
-    }
-
+    .form-input-wrap { position: relative; }
     .form-input {
       width: 100%;
       background: rgba(255,255,255,0.04);
@@ -241,14 +206,7 @@
       font-size: 13px;
       color: var(--white);
       outline: none;
-      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
-      letter-spacing: 0.02em;
-    }
-
-    .form-input::placeholder {
-      color: rgba(255,255,255,0.2);
-      letter-spacing: 0.05em;
-      font-weight: 400;
+      transition: border-color 0.2s, background 0.2s;
     }
 
     .form-input:focus {
@@ -266,16 +224,10 @@
       border: none;
       cursor: pointer;
       color: var(--white-muted);
-      font-size: 14px;
-      padding: 4px;
       transition: color 0.2s;
-      display: flex;
-      align-items: center;
     }
-
     .toggle-eye:hover { color: var(--gold); }
 
-    /* Error message */
     .error-msg {
       font-family: 'Inter', sans-serif;
       display: none;
@@ -290,7 +242,6 @@
       margin-bottom: 16px;
       animation: shake 0.4s ease;
     }
-
     .error-msg.show { display: flex; }
 
     @keyframes shake {
@@ -301,7 +252,6 @@
       80% { transform: translateX(6px); }
     }
 
-    /* Submit button */
     .btn-login {
       width: 100%;
       padding: 15px;
@@ -313,31 +263,12 @@
       letter-spacing: 0.15em;
       color: var(--navy-deep);
       cursor: pointer;
-      transition: transform 0.15s, box-shadow 0.2s, opacity 0.2s;
+      transition: transform 0.15s, box-shadow 0.2s;
       box-shadow: 0 4px 24px rgba(255,215,0,0.2);
       margin-top: 8px;
-      position: relative;
-      overflow: hidden;
     }
+    .btn-login:hover { transform: translateY(-1px); box-shadow: 0 8px 32px rgba(255,215,0,0.35); }
 
-    .btn-login::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
-
-    .btn-login:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 32px rgba(255,215,0,0.35);
-    }
-
-    .btn-login:hover::before { opacity: 1; }
-    .btn-login:active { transform: translateY(0); }
-
-    /* Footer note */
     .login-footer {
       font-family: 'Inter', sans-serif;
       margin-top: 32px;
@@ -346,11 +277,9 @@
       font-size: 10px;
       color: rgba(255,255,255,0.2);
       letter-spacing: 0.05em;
-      line-height: 1.8;
       text-align: center;
     }
 
-    /* ── Responsive ── */
     @media (max-width: 768px) {
       .wrapper { grid-template-columns: 1fr; }
       .left { display: none; }
@@ -375,7 +304,6 @@
 
 <div class="wrapper">
 
-  <!-- LEFT PANEL -->
   <div class="left">
     <p class="brand-eyebrow">GOD'S GRACE ULTRA</p>
     <div class="brand-name">Grace<span>Proposal</span></div>
@@ -387,34 +315,29 @@
     </p>
   </div>
 
-  <!-- RIGHT PANEL -->
   <div class="right">
     <div class="login-card">
       <div class="lock-icon">🔒</div>
       <h1 class="login-title">Secure Access</h1>
-      <p class="login-subtitle">Enter your password to access GraceProposal</p>
+      <p class="login-subtitle">Enter your email and password to access GraceProposal</p>
 
       <div class="error-msg" id="errorMsg">
         <span>⚠</span>
-        <span>Incorrect password. Try again.</span>
+        <span id="errorText">Invalid email or password</span>
       </div>
 
       <div class="form-group">
-        <label class="form-label" for="passwordInput">Access Password</label>
+        <label class="form-label" for="emailInput">Email Address</label>
         <div class="form-input-wrap">
-          <input
-            type="password"
-            id="passwordInput"
-            class="form-input"
-            placeholder="Enter your password"
-            autocomplete="current-password"
-          />
-          <button class="toggle-eye" id="toggleEye" type="button" aria-label="Toggle password visibility">
-            <svg id="eyeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-              <circle cx="12" cy="12" r="3"/>
-            </svg>
-          </button>
+          <input type="email" id="emailInput" class="form-input" placeholder="admin@yourdomain.com" autocomplete="email"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="passwordInput">Password</label>
+        <div class="form-input-wrap">
+          <input type="password" id="passwordInput" class="form-input" placeholder="Enter your password" autocomplete="current-password"/>
+          <button class="toggle-eye" id="toggleEye" type="button">👁</button>
         </div>
       </div>
 
@@ -430,61 +353,65 @@
 </div>
 
 <script>
-  // ── CONFIG ──
-  // Change this to your actual password before deploying
-  const CORRECT_PASSWORD = '';
+  // Supabase (same database as GraceLedger)
+  const SUPABASE_URL = 'https://gwvhryfpefhntylnmjqx.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd3dmhyeWZwZWZobnR5bG5tanF4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ3OTM4NzQsImV4cCI6MjA5MDM2OTg3NH0.AMfpcQQ-kzkjmnu_POaNR_IXqCBuVJjOoBp7cgvQcOk';
+  const { createClient } = supabase;
+  const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-  // ── ELEMENTS ──
-  const input     = document.getElementById('passwordInput');
-  const loginBtn  = document.getElementById('loginBtn');
-  const errorMsg  = document.getElementById('errorMsg');
+  const emailInput = document.getElementById('emailInput');
+  const passwordInput = document.getElementById('passwordInput');
+  const loginBtn = document.getElementById('loginBtn');
+  const errorMsg = document.getElementById('errorMsg');
+  const errorText = document.getElementById('errorText');
   const toggleEye = document.getElementById('toggleEye');
 
-  // ── TOGGLE VISIBILITY ──
   toggleEye.addEventListener('click', () => {
-    const isPassword = input.type === 'password';
-    input.type = isPassword ? 'text' : 'password';
-    toggleEye.innerHTML = isPassword
-      ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-           <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
-           <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
-           <line x1="1" y1="1" x2="23" y2="23"/>
-         </svg>`
-      : `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-           <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-           <circle cx="12" cy="12" r="3"/>
-         </svg>`;
+    const isPassword = passwordInput.type === 'password';
+    passwordInput.type = isPassword ? 'text' : 'password';
+    toggleEye.textContent = isPassword ? '🙈' : '👁';
   });
 
-  // ── LOGIN LOGIC ──
-  function attemptLogin() {
-    const val = input.value.trim();
-    if (val === CORRECT_PASSWORD) {
-      sessionStorage.setItem('gp_auth', 'true');
-      loginBtn.textContent = 'UNLOCKING...';
-      loginBtn.style.opacity = '0.7';
-      setTimeout(() => {
-        window.location.href = 'create-proposal.html';
-      }, 600);
-    } else {
+  async function attemptLogin() {
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    if (!email || !password) {
+      errorText.textContent = 'Please enter both email and password';
       errorMsg.classList.remove('show');
-      void errorMsg.offsetWidth; // re-trigger animation
+      void errorMsg.offsetWidth;
       errorMsg.classList.add('show');
-      input.value = '';
-      input.focus();
+      return;
+    }
+
+    loginBtn.textContent = 'AUTHENTICATING...';
+    loginBtn.disabled = true;
+
+    const { data, error } = await supabaseClient.auth.signInWithPassword({
+      email: email,
+      password: password
+    });
+
+    if (error) {
+      errorText.textContent = 'Invalid email or password';
+      errorMsg.classList.remove('show');
+      void errorMsg.offsetWidth;
+      errorMsg.classList.add('show');
+      loginBtn.textContent = 'ENTER GRACEPROPOSAL';
+      loginBtn.disabled = false;
+      passwordInput.value = '';
+      passwordInput.focus();
+    } else if (data.session) {
+      sessionStorage.setItem('gp_auth', 'true');
+      sessionStorage.setItem('gp_user_email', data.user.email);
+      window.location.href = 'create-proposal.html';
     }
   }
 
   loginBtn.addEventListener('click', attemptLogin);
-  input.addEventListener('keydown', e => { if (e.key === 'Enter') attemptLogin(); });
-
-  // ── AUTO-REDIRECT IF ALREADY LOGGED IN ──
-  if (sessionStorage.getItem('gp_auth') === 'true') {
-    window.location.href = 'create-proposal.html';
-  }
-
-  // ── FOCUS INPUT ON LOAD ──
-  window.addEventListener('load', () => input.focus());
+  passwordInput.addEventListener('keydown', e => { if (e.key === 'Enter') attemptLogin(); });
+  emailInput.addEventListener('keydown', e => { if (e.key === 'Enter') attemptLogin(); });
+  window.addEventListener('load', () => emailInput.focus());
 </script>
 
 </body>
