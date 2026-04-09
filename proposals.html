@@ -29,7 +29,7 @@
     html, body {
       height: 100%;
       background: var(--navy-deep);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-family: 'Inter', sans-serif;
       color: var(--white);
       overflow: hidden;
     }
@@ -53,7 +53,6 @@
       height: 100vh;
     }
 
-    /* ── SIDEBAR ── */
     .sidebar {
       width: var(--sidebar-w);
       background: rgba(4,7,46,0.95);
@@ -158,7 +157,6 @@
       border-color: rgba(231,76,60,0.4);
     }
 
-    /* ── MAIN ── */
     .main {
       flex: 1;
       display: flex;
@@ -208,7 +206,6 @@
     .content::-webkit-scrollbar { width: 4px; }
     .content::-webkit-scrollbar-thumb { background: var(--gold-border); border-radius: 4px; }
 
-    /* ── FILTERS ── */
     .filter-bar {
       display: flex;
       gap: 12px;
@@ -230,16 +227,8 @@
       transition: all 0.2s;
     }
 
-    .filter-tab:hover {
-      color: var(--white);
-      border-color: rgba(255,255,255,0.3);
-    }
-
-    .filter-tab.active {
-      background: var(--gold-glow);
-      border-color: rgba(255,215,0,0.4);
-      color: var(--gold);
-    }
+    .filter-tab:hover { color: var(--white); border-color: rgba(255,255,255,0.3); }
+    .filter-tab.active { background: var(--gold-glow); border-color: rgba(255,215,0,0.4); color: var(--gold); }
 
     .search-wrap {
       position: relative;
@@ -268,9 +257,7 @@
     }
 
     .search-input:focus { border-color: rgba(255,215,0,0.4); }
-    .search-input::placeholder { color: rgba(255,255,255,0.2); }
 
-    /* ── TABLE ── */
     .table-wrap {
       background: rgba(13,18,112,0.2);
       border: 1px solid var(--gold-border);
@@ -308,7 +295,6 @@
     .data-table tr:last-child td { border-bottom: none; }
     .data-table tbody tr:hover td { background: rgba(255,215,0,0.02); }
 
-    /* Status badges */
     .status-badge {
       display: inline-block;
       padding: 4px 12px;
@@ -319,35 +305,12 @@
       font-weight: 500;
     }
 
-    .status-draft {
-      background: rgba(52,152,219,0.12);
-      color: var(--blue);
-      border: 1px solid rgba(52,152,219,0.25);
-    }
+    .status-draft { background: rgba(52,152,219,0.12); color: var(--blue); border: 1px solid rgba(52,152,219,0.25); }
+    .status-sent { background: rgba(243,156,18,0.12); color: var(--amber); border: 1px solid rgba(243,156,18,0.25); }
+    .status-accepted { background: rgba(46,204,113,0.12); color: var(--green); border: 1px solid rgba(46,204,113,0.25); }
+    .status-declined { background: rgba(231,76,60,0.12); color: var(--red); border: 1px solid rgba(231,76,60,0.25); }
 
-    .status-sent {
-      background: rgba(243,156,18,0.12);
-      color: var(--amber);
-      border: 1px solid rgba(243,156,18,0.25);
-    }
-
-    .status-accepted {
-      background: rgba(46,204,113,0.12);
-      color: var(--green);
-      border: 1px solid rgba(46,204,113,0.25);
-    }
-
-    .status-declined {
-      background: rgba(231,76,60,0.12);
-      color: var(--red);
-      border: 1px solid rgba(231,76,60,0.25);
-    }
-
-    /* Action buttons */
-    .action-group {
-      display: flex;
-      gap: 8px;
-    }
+    .action-group { display: flex; gap: 8px; }
 
     .icon-btn {
       background: none;
@@ -361,29 +324,12 @@
       color: var(--white-muted);
     }
 
-    .icon-btn:hover {
-      background: var(--gold-glow);
-      color: var(--gold);
-      border-color: rgba(255,215,0,0.4);
-    }
+    .icon-btn:hover { background: var(--gold-glow); color: var(--gold); border-color: rgba(255,215,0,0.4); }
+    .icon-btn.delete:hover { background: rgba(231,76,60,0.08); color: var(--red); border-color: rgba(231,76,60,0.3); }
 
-    .icon-btn.delete:hover {
-      background: rgba(231,76,60,0.08);
-      color: var(--red);
-      border-color: rgba(231,76,60,0.3);
-    }
-
-    /* Empty state */
-    .empty-state {
-      padding: 60px 24px;
-      text-align: center;
-      color: var(--white-muted);
-      font-size: 12px;
-    }
-
+    .empty-state { padding: 60px 24px; text-align: center; color: var(--white-muted); font-size: 12px; }
     .empty-state-icon { font-size: 48px; margin-bottom: 16px; opacity: 0.4; }
 
-    /* Modal */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -394,7 +340,6 @@
       align-items: center;
       justify-content: center;
     }
-
     .modal-overlay.open { display: flex; }
 
     .confirm-modal {
@@ -406,10 +351,9 @@
       max-width: 360px;
       text-align: center;
     }
-
     .confirm-icon { font-size: 36px; margin-bottom: 16px; }
     .confirm-title { font-family: 'Playfair Display', serif; font-size: 20px; margin-bottom: 8px; }
-    .confirm-text { font-size: 11px; color: var(--white-muted); line-height: 1.8; margin-bottom: 24px; }
+    .confirm-text { font-size: 11px; color: var(--white-muted); margin-bottom: 24px; }
     .confirm-actions { display: flex; gap: 10px; justify-content: center; }
 
     .btn-cancel {
@@ -422,7 +366,6 @@
       color: var(--white-muted);
       cursor: pointer;
     }
-
     .btn-cancel:hover { color: var(--white); }
 
     .btn-danger {
@@ -436,10 +379,8 @@
       color: var(--red);
       cursor: pointer;
     }
-
     .btn-danger:hover { background: rgba(231,76,60,0.25); }
 
-    /* Toast */
     .toast {
       position: fixed;
       bottom: 28px;
@@ -454,10 +395,23 @@
       align-items: center;
       gap: 10px;
     }
-
     .toast.show { display: flex; }
 
-    /* Responsive */
+    .menu-toggle {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 1001;
+      background: var(--gold);
+      border: none;
+      border-radius: 8px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 18px;
+      color: var(--navy-deep);
+      display: none;
+    }
+
     @media (max-width: 768px) {
       .sidebar {
         position: fixed;
@@ -478,24 +432,6 @@
       .filter-bar { flex-direction: column; align-items: stretch; }
       .search-wrap { margin-left: 0; }
       .search-input { width: 100%; }
-    }
-
-    .menu-toggle {
-      position: fixed;
-      top: 16px;
-      left: 16px;
-      z-index: 1001;
-      background: var(--gold);
-      border: none;
-      border-radius: 8px;
-      padding: 8px 12px;
-      cursor: pointer;
-      font-size: 18px;
-      color: var(--navy-deep);
-      display: none;
-    }
-
-    @media (max-width: 768px) {
       .menu-toggle { display: block; }
     }
   </style>
@@ -543,34 +479,20 @@
 
       <div class="table-wrap">
         <table class="data-table">
-          <thead>
-            <tr>
-              <th>Client</th>
-              <th>Service</th>
-              <th>Amount</th>
-              <th>Created</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </thead>
-          <tbody id="proposalsTableBody">
-            <tr><td colspan="6"><div class="empty-state"><div class="empty-state-icon">📋</div>Loading proposals...</div> </td> </tr>
-          </tbody>
-         </table>
+          <thead><tr><th>Client</th><th>Service</th><th>Amount</th><th>Created</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody id="proposalsTableBody"><tr><td colspan="6"><div class="empty-state"><div class="empty-state-icon">📋</div>Loading proposals...</div></td></tr></tbody>
+        </table>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Delete Modal -->
 <div class="modal-overlay" id="deleteModal">
   <div class="confirm-modal">
     <div class="confirm-icon">🗑️</div>
     <div class="confirm-title">Delete Proposal?</div>
     <div class="confirm-text" id="deleteConfirmText">This cannot be undone.</div>
-    <div class="confirm-actions">
-      <button class="btn-cancel" id="cancelDelete">Cancel</button>
-      <button class="btn-danger" id="confirmDelete">DELETE</button>
-    </div>
+    <div class="confirm-actions"><button class="btn-cancel" id="cancelDelete">Cancel</button><button class="btn-danger" id="confirmDelete">DELETE</button></div>
   </div>
 </div>
 
@@ -589,17 +511,28 @@
     });
   }
 
-  // Auth guard
-  if (sessionStorage.getItem('gp_auth') !== 'true') window.location.href = 'index.html';
-
-  // Supabase
+  // ── SUPABASE ──
   const SUPABASE_URL = 'https://gwvhryfpefhntylnmjqx.supabase.co';
   const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd3dmhyeWZwZWZobnR5bG5tanF4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ3OTM4NzQsImV4cCI6MjA5MDM2OTg3NH0.AMfpcQQ-kzkjmnu_POaNR_IXqCBuVJjOoBp7cgvQcOk';
   const { createClient } = supabase;
-  const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  const db = supabaseClient;
 
-  // Logout
-  document.getElementById('logoutBtn').addEventListener('click', () => {
+  // ── REAL AUTH GUARD (Supabase) ──
+  async function checkAuth() {
+    const { data: { session } } = await supabaseClient.auth.getSession();
+    if (!session) {
+      sessionStorage.removeItem('gp_auth');
+      window.location.href = 'index.html';
+      return false;
+    }
+    sessionStorage.setItem('gp_auth', 'true');
+    return true;
+  }
+
+  // ── LOGOUT (Supabase) ──
+  document.getElementById('logoutBtn').addEventListener('click', async () => {
+    await supabaseClient.auth.signOut();
     sessionStorage.removeItem('gp_auth');
     window.location.href = 'index.html';
   });
@@ -608,24 +541,9 @@
   let activeFilter = 'all';
   let deleteTargetId = null;
 
-  function formatCurrency(amount) {
-    if (!amount) return '—';
-    return '$' + amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  }
-
-  function formatDate(dateStr) {
-    if (!dateStr) return '—';
-    const d = new Date(dateStr);
-    return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
-  }
-
-  function showToast(msg, type = 'info') {
-    const toast = document.getElementById('toast');
-    const icon = type === 'success' ? '✅' : type === 'error' ? '⚠️' : 'ℹ️';
-    toast.innerHTML = `${icon} ${msg}`;
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 3000);
-  }
+  function formatCurrency(amount) { if (!amount) return '—'; return '$' + amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  function formatDate(dateStr) { if (!dateStr) return '—'; const d = new Date(dateStr); return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }); }
+  function showToast(msg, type = 'info') { const toast = document.getElementById('toast'); const icon = type === 'success' ? '✅' : '⚠️'; toast.innerHTML = `${icon} ${msg}`; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 3000); }
 
   async function updateStatus(id, newStatus) {
     const { error } = await db.from('proposals').update({ status: newStatus }).eq('id', id);
@@ -656,24 +574,11 @@
         <td class="amount-cell" style="color:var(--gold);font-weight:500;">${formatCurrency(p.investment_usd)}</td>
         <td style="font-size:11px;color:var(--white-muted);">${formatDate(p.created_at)}</td>
         <td><select class="status-select" data-id="${p.id}" style="background:transparent;border:1px solid var(--gold-border);border-radius:6px;padding:4px 8px;color:var(--white);font-size:11px;cursor:pointer;">${getStatusOptions(p.status)}</select></td>
-        <td class="action-group">
-          <button class="icon-btn pdf-btn" data-id="${p.id}">📄 PDF</button>
-          <button class="icon-btn delete" data-id="${p.id}">🗑️</button>
-        </td>
-      </tr>
-    `).join('');
+        <td class="action-group"><button class="icon-btn pdf-btn" data-id="${p.id}">📄 PDF</button><button class="icon-btn delete" data-id="${p.id}">🗑️</button></td>
+      </tr>`).join('');
 
-    document.querySelectorAll('.status-select').forEach(select => {
-      select.addEventListener('change', (e) => {
-        e.stopPropagation();
-        updateStatus(select.dataset.id, select.value);
-      });
-    });
-
-    document.querySelectorAll('.pdf-btn').forEach(btn => {
-      btn.addEventListener('click', () => generatePDF(btn.dataset.id));
-    });
-
+    document.querySelectorAll('.status-select').forEach(select => { select.addEventListener('change', (e) => { updateStatus(select.dataset.id, select.value); }); });
+    document.querySelectorAll('.pdf-btn').forEach(btn => { btn.addEventListener('click', () => generatePDF(btn.dataset.id)); });
     document.querySelectorAll('.icon-btn.delete').forEach(btn => {
       btn.addEventListener('click', () => {
         const proposal = proposals.find(p => p.id === btn.dataset.id);
@@ -689,15 +594,7 @@
     return statuses.map(s => `<option value="${s}" ${s === current ? 'selected' : ''}>${s.charAt(0).toUpperCase() + s.slice(1)}</option>`).join('');
   }
 
-  function escapeHtml(str) {
-    if (!str) return '';
-    return str.replace(/[&<>]/g, function(m) {
-      if (m === '&') return '&amp;';
-      if (m === '<') return '&lt;';
-      if (m === '>') return '&gt;';
-      return m;
-    });
-  }
+  function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
 
   async function loadProposals() {
     const { data, error } = await db.from('proposals').select('*').order('created_at', { ascending: false });
@@ -724,187 +621,74 @@
   });
 
   document.getElementById('searchInput').addEventListener('input', applyFilters);
+  document.getElementById('cancelDelete').addEventListener('click', () => { document.getElementById('deleteModal').classList.remove('open'); deleteTargetId = null; });
+  document.getElementById('confirmDelete').addEventListener('click', async () => { if (deleteTargetId) await deleteProposal(deleteTargetId); document.getElementById('deleteModal').classList.remove('open'); deleteTargetId = null; });
 
-  document.getElementById('cancelDelete').addEventListener('click', () => {
-    document.getElementById('deleteModal').classList.remove('open');
-    deleteTargetId = null;
-  });
-  document.getElementById('confirmDelete').addEventListener('click', async () => {
-    if (deleteTargetId) await deleteProposal(deleteTargetId);
-    document.getElementById('deleteModal').classList.remove('open');
-    deleteTargetId = null;
-  });
-
-  // PROFESSIONAL PDF GENERATION - Black content like GraceLedger invoice
   async function generatePDF(id) {
     const proposal = allProposals.find(p => p.id === id);
     if (!proposal) return;
-
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ unit: 'mm', format: 'a4' });
-    const W = 210;
-    const margin = 20;
+    const W = 210, margin = 20;
 
-    // ========== HEADER ==========
-    doc.setFillColor(7, 11, 86);
-    doc.rect(0, 0, W, 55, 'F');
+    doc.setFillColor(7, 11, 86); doc.rect(0, 0, W, 55, 'F');
+    doc.setTextColor(255, 215, 0); doc.setFont('helvetica', 'bold'); doc.setFontSize(24); doc.text("GOD'S GRACE ULTRA", margin, 25);
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(180, 185, 220); doc.text('Great things begin where clarity meets action', margin, 35);
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(18); doc.setTextColor(255, 215, 0); doc.text('PROPOSAL', W - margin, 28, { align: 'right' });
+    doc.setFontSize(8); doc.setTextColor(200, 210, 255); doc.text(`Issued: ${new Date().toLocaleDateString()}`, W - margin, 38, { align: 'right' });
 
-    doc.setTextColor(255, 215, 0);
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(24);
-    doc.text("GOD'S GRACE ULTRA", margin, 25);
-    
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(8);
-    doc.setTextColor(180, 185, 220);
-    doc.text('Great things begin where clarity meets action', margin, 35);
-    
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(18);
-    doc.setTextColor(255, 215, 0);
-    doc.text('PROPOSAL', W - margin, 28, { align: 'right' });
-    
-    doc.setFontSize(8);
-    doc.setTextColor(200, 210, 255);
-    doc.text(`Issued: ${new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}`, W - margin, 38, { align: 'right' });
-
-    // ========== PREPARED FOR ==========
     let y = 70;
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(8);
-    doc.setTextColor(100, 110, 160);
-    doc.text('PREPARED FOR', margin, y);
-    y += 6;
-    
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(12);
-    doc.setTextColor(20, 20, 20);
-    doc.text(proposal.client_name, margin, y);
-    
-    if (proposal.client_company) {
-      y += 5;
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(9);
-      doc.setTextColor(80, 80, 80);
-      doc.text(proposal.client_company, margin, y);
-    }
-    
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(8); doc.setTextColor(100, 110, 160); doc.text('PREPARED FOR', margin, y);
+    y += 6; doc.setFont('helvetica', 'bold'); doc.setFontSize(12); doc.setTextColor(20, 20, 20); doc.text(proposal.client_name, margin, y);
+    if (proposal.client_company) { y += 5; doc.setFont('helvetica', 'normal'); doc.setFontSize(9); doc.setTextColor(80, 80, 80); doc.text(proposal.client_company, margin, y); }
     y += 12;
 
-    // ========== SERVICE TYPE (Ensuring it displays) ==========
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(8);
-    doc.setTextColor(100, 110, 160);
-    doc.text('SERVICE TYPE', margin, y);
-    y += 6;
-    
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(10);
-    doc.setTextColor(20, 20, 20);
-    doc.text(proposal.service_type || 'Consulting Services', margin, y);
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(8); doc.setTextColor(100, 110, 160); doc.text('SERVICE TYPE', margin, y);
+    y += 6; doc.setFont('helvetica', 'normal'); doc.setFontSize(10); doc.setTextColor(20, 20, 20); doc.text(proposal.service_type || 'Consulting Services', margin, y);
     y += 12;
 
-    // ========== PROJECT SCOPE ==========
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(8);
-    doc.setTextColor(100, 110, 160);
-    doc.text('PROJECT SCOPE', margin, y);
-    y += 6;
-    
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(10);
-    doc.setTextColor(20, 20, 20);
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(8); doc.setTextColor(100, 110, 160); doc.text('PROJECT SCOPE', margin, y);
+    y += 6; doc.setFont('helvetica', 'normal'); doc.setFontSize(10); doc.setTextColor(20, 20, 20);
     const scopeLines = doc.splitTextToSize(proposal.project_scope || 'Not specified', W - margin * 2);
     doc.text(scopeLines, margin, y);
     y += (scopeLines.length * 5) + 8;
 
-    // ========== TIMELINE ==========
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(8);
-    doc.setTextColor(100, 110, 160);
-    doc.text('TIMELINE', margin, y);
-    y += 6;
-    
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(10);
-    doc.setTextColor(20, 20, 20);
-    doc.text(proposal.timeline || 'To be confirmed', margin, y);
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(8); doc.setTextColor(100, 110, 160); doc.text('TIMELINE', margin, y);
+    y += 6; doc.setFont('helvetica', 'normal'); doc.setFontSize(10); doc.setTextColor(20, 20, 20); doc.text(proposal.timeline || 'To be confirmed', margin, y);
     y += 12;
 
-    // ========== WHAT'S INCLUDED ==========
     if (proposal.whats_included && proposal.whats_included.trim()) {
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(8);
-      doc.setTextColor(100, 110, 160);
-      doc.text('WHAT\'S INCLUDED', margin, y);
-      y += 6;
-      
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(9);
-      doc.setTextColor(20, 20, 20);
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(8); doc.setTextColor(100, 110, 160); doc.text('WHAT\'S INCLUDED', margin, y);
+      y += 6; doc.setFont('helvetica', 'normal'); doc.setFontSize(9); doc.setTextColor(20, 20, 20);
       let includedText = proposal.whats_included;
-      if (!includedText.includes('•') && !includedText.includes('-')) {
-        includedText = includedText.split('\n').map(line => `• ${line.trim()}`).join('\n');
-      }
+      if (!includedText.includes('•') && !includedText.includes('-')) includedText = includedText.split('\n').map(line => `• ${line.trim()}`).join('\n');
       const includedLines = doc.splitTextToSize(includedText, W - margin * 2);
       doc.text(includedLines, margin, y);
       y += (includedLines.length * 4.5) + 10;
     }
 
-    // ========== INVESTMENT ==========
-    doc.setDrawColor(230, 230, 240);
-    doc.setLineWidth(0.4);
-    doc.line(margin, y, W - margin, y);
-    y += 8;
-    
-    doc.setFillColor(7, 11, 86);
-    doc.rect(W - margin - 70, y - 4, 70, 14, 'F');
-    
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(9);
-    doc.setTextColor(180, 185, 220);
-    doc.text('TOTAL INVESTMENT', W - margin - 35, y + 3, { align: 'center' });
-    
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(13);
-    doc.setTextColor(255, 215, 0);
-    doc.text(formatCurrency(proposal.investment_usd), W - margin - 3, y + 9, { align: 'right' });
-    
+    doc.setDrawColor(230, 230, 240); doc.setLineWidth(0.4); doc.line(margin, y, W - margin, y);
+    y += 8; doc.setFillColor(7, 11, 86); doc.rect(W - margin - 70, y - 4, 70, 14, 'F');
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor(180, 185, 220); doc.text('TOTAL INVESTMENT', W - margin - 35, y + 3, { align: 'center' });
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(13); doc.setTextColor(255, 215, 0); doc.text(formatCurrency(proposal.investment_usd), W - margin - 3, y + 9, { align: 'right' });
     y += 20;
 
-    // ========== TERMS ==========
     if (y < 240) {
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(8);
-      doc.setTextColor(100, 110, 160);
-      doc.text('TERMS', margin, y);
-      y += 5;
-      
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(7);
-      doc.setTextColor(100, 110, 160);
-      doc.text('This proposal is valid for 30 days from the date of issue.', margin, y);
-      y += 4;
-      doc.text('Payment terms: 50% upfront, 50% upon completion.', margin, y);
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(8); doc.setTextColor(100, 110, 160); doc.text('TERMS', margin, y);
+      y += 5; doc.setFont('helvetica', 'normal'); doc.setFontSize(7); doc.setTextColor(100, 110, 160); doc.text('This proposal is valid for 30 days from the date of issue.', margin, y);
+      y += 4; doc.text('Payment terms: 50% upfront, 50% upon completion.', margin, y);
     }
 
-    // ========== FOOTER ==========
-    const footerY = 272;
-    doc.setFillColor(7, 11, 86);
-    doc.rect(0, footerY, W, 25, 'F');
-    
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(8);
-    doc.setTextColor(180, 185, 220);
-    doc.text("GOD'S GRACE ULTRA  ·  Data Intelligence Consultancy", W / 2, footerY + 9, { align: 'center' });
-    doc.setTextColor(255, 215, 0);
-    doc.text('Great things begin where clarity meets action', W / 2, footerY + 16, { align: 'center' });
-
+    const footerY = 272; doc.setFillColor(7, 11, 86); doc.rect(0, footerY, W, 25, 'F');
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(180, 185, 220); doc.text("GOD'S GRACE ULTRA  ·  Data Intelligence Consultancy", W / 2, footerY + 9, { align: 'center' });
+    doc.setTextColor(255, 215, 0); doc.text('Great things begin where clarity meets action', W / 2, footerY + 16, { align: 'center' });
     doc.save(`${proposal.client_name.replace(/\s+/g, '_')}_Proposal.pdf`);
     showToast('Professional PDF generated!', 'success');
   }
 
-  loadProposals();
+  // ── INIT ──
+  async function init() { const authed = await checkAuth(); if (authed) loadProposals(); }
+  init();
 </script>
 
 </body>
